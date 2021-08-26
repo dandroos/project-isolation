@@ -81,13 +81,18 @@ collections:
           - label: "Message sent text"
             name: contact_form_message_sent
             widget: "string"
-  - label: "Contact info"
-    name: "contact_info"
-    file: "content/contact-info.md"
-    fields:
-      - label: "Email"
-        name: email
-        widget: string
-      - label: "Instagram"
-        name: instagram
-        widget: string
+  - label: "Admin"
+    name: "admin"
+    editor:
+      preview: false
+    files:
+      - label: "Contact and social"
+        name: "admin"
+        file: "content/contact-info.md"
+        fields:
+          - label: "Email"
+            name: email
+            widget: string
+          - label: "Instagram"
+            name: instagram
+            widget: string
