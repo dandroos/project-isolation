@@ -3,6 +3,30 @@ backend:
   branch: master
 media_folder: content/images
 collections:
+  - name: articles
+    label: Articles
+    label_singular: Article
+    folder: articles
+    create: true
+    editor:
+      preview: false
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    path: '{{slug}}/index'
+    media_folder: ''
+    summary: "TITLE: {{title}} - POSTED: {{day}}/{{month}}/{{year}}"
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Featured Image
+        name: featured_image
+        widget: image
+      - label: Date
+        name: date
+        widget: datetime
+      - label: Body
+        name: body
+        widget: markdown
   - label: "Pages"
     name: "pages"
     media_folder: "./images"
@@ -15,11 +39,55 @@ collections:
         file: "content/homepage.md"
         fields:
           - label: "Image"
-            name: image
+            name: homepage_image
             widget: image
           - label: "Heading"
-            name: heading
+            name: homepage_heading
             widget: string
           - label: "Subheading"
-            name: subheading
+            name: homepage_subheading
             widget: string
+          - label: "Call to action"
+            name: homepage_cta
+            widget: string
+      - label: "About"
+        name: "about"
+        file: "content/about.md"
+        fields:
+          - label: "Slideshow images"
+            name: about_slideshow_images
+            widget: "list"
+            summary: '{{fields.image}}'
+            field: {label: Image, name: image, widget: image}
+          - label: "Body"
+            name: about_body
+            widget: markdown
+            buttons: ["bold", "italic"]
+            editor_components: []
+            modes: ["raw"]
+      - label: "Contact"
+        name: "contact"
+        file: "content/contact.md"
+        fields:
+          - label: "Contact form introduction"
+            name: contact_form_intro
+            widget: "string"
+          - label: "Message sending text"
+            name: contact_form_message_sending
+            widget: "string"
+          - label: "Message error text"
+            name: contact_form_message_error
+            widget: "string"
+          - label: "Message sent text"
+            name: contact_form_message_sent
+            widget: "string"
+  - label: "Contact info"
+    name: "contact_info"
+    file: "content/contact-info.md"
+    fields:
+      - label: "Email"
+        name: email
+        widget: string
+      - label: "Instagram"
+        name: instagram
+        widget: string
